@@ -1,0 +1,76 @@
+Моя HomeLab
+
+```
+Last login: Sun Jan  4 20:32:06 2026 from 193.124.190.51
+root@k8s:~# docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+NAMES                     IMAGE                                                            STATUS                 PORTS
+jenkins                   jenkins/jenkins:lts-jdk21                                        Up 2 weeks             0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp
+immich_server             ghcr.io/immich-app/immich-server:v2                              Up 5 weeks (healthy)   0.0.0.0:2283->2283/tcp, [::]:2283->2283/tcp
+immich_postgres           ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0   Up 5 weeks (healthy)   5432/tcp
+immich_machine_learning   ghcr.io/immich-app/immich-machine-learning:v2                    Up 5 weeks (healthy)   
+immich_redis              valkey/valkey:8                                                  Up 5 weeks (healthy)   6379/tcp
+grafana                   grafana/grafana-oss:latest                                       Up 5 weeks             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+node_exporter             quay.io/prometheus/node-exporter:latest                          Up 5 weeks             
+vmagent                   victoriametrics/vmagent:latest                                   Up 5 weeks             
+victoriametrics           victoriametrics/victoria-metrics:v1.130.0                        Up 5 weeks             0.0.0.0:8428->8428/tcp, [::]:8428->8428/tcp
+gitlab-runner             gitlab/gitlab-runner:latest                                      Up 6 weeks             
+clab-basic-lab-host1      alpine:latest                                                    Up 7 weeks             
+clab-basic-lab-host2      alpine:latest                                                    Up 7 weeks             
+root@k8s:~# 
+root@k8s:~# 
+```
+
+
+# Master
+
+Last login: Fri Dec 26 15:55:33 2025 from 188.124.243.181
+root@wow:~# kubectl get pods -A
+NAMESPACE                   NAME                                                READY   STATUS    RESTARTS      AGE
+argocd                      argocd-application-controller-0                     1/1     Running   0             40d
+argocd                      argocd-applicationset-controller-595f9b9cbd-cw4nt   1/1     Running   0             40d
+argocd                      argocd-dex-server-646587cb78-scr9s                  1/1     Running   0             65d
+argocd                      argocd-notifications-controller-68886c68d-vkxjt     1/1     Running   0             40d
+argocd                      argocd-redis-6978f9649b-rvvvq                       1/1     Running   0             40d
+argocd                      argocd-repo-server-6bb7f6f975-xzhpc                 1/1     Running   0             9d
+argocd                      argocd-server-75bb9fd84d-qhlhn                      1/1     Running   0             9d
+cert-manager                cert-manager-67c7bd9c75-x2znb                       1/1     Running   0             64d
+cert-manager                cert-manager-cainjector-b7d6d7b69-9fcxq             1/1     Running   0             64d
+cert-manager                cert-manager-webhook-f59749c6b-kh259                1/1     Running   0             40d
+dashy                       dashy-6f497b4786-5pl7k                              1/1     Running   1 (9d ago)    9d
+default                     net-test                                            1/1     Running   1 (64d ago)   64d
+default                     whoami-74684567d7-vkwhc                             1/1     Running   0             40d
+default                     whoami-74684567d7-vr8j2                             1/1     Running   0             66d
+gitlab-agent-kriswow        kriswow-gitlab-agent-v2-6db9d98db4-rhr5v            1/1     Running   0             40d
+gitlab-agent-kriswow        kriswow-gitlab-agent-v2-6db9d98db4-w4dk5            1/1     Running   0             64d
+gitlab-agent-kriswowagent   kriswowagent-gitlab-agent-v2-54686ccc65-hvqnc       1/1     Running   0             45d
+gitlab-agent-kriswowagent   kriswowagent-gitlab-agent-v2-54686ccc65-vl2n8       1/1     Running   0             40d
+ingress-nginx               ingress-nginx-controller-6f6c964579-b6f49           1/1     Running   0             64d
+kube-system                 calico-kube-controllers-5fc5fc74c5-tnp87            1/1     Running   0             73d
+kube-system                 calico-node-jp5db                                   1/1     Running   1 (40d ago)   53d
+kube-system                 calico-node-wrcjr                                   1/1     Running   0             53d
+kube-system                 calico-node-wtwqx                                   1/1     Running   0             53d
+kube-system                 coredns-6f7745bcc6-56cs5                            1/1     Running   0             40d
+kube-system                 coredns-6f7745bcc6-s84hq                            1/1     Running   0             45d
+kube-system                 etcd-wow.master                                     1/1     Running   0             73d
+kube-system                 kube-apiserver-wow.master                           1/1     Running   0             73d
+kube-system                 kube-controller-manager-wow.master                  1/1     Running   2 (24h ago)   73d
+kube-system                 kube-proxy-4wqmt                                    1/1     Running   1 (40d ago)   71d
+kube-system                 kube-proxy-m9lvq                                    1/1     Running   0             71d
+kube-system                 kube-proxy-wzmxk                                    1/1     Running   0             73d
+kube-system                 kube-scheduler-wow.master                           1/1     Running   1 (24h ago)   73d
+kube-system                 metrics-server-5c6b95dc48-4q9qc                     1/1     Running   0             40d
+local-path-storage          local-path-provisioner-58d7d75db9-msjt6             1/1     Running   0             40d
+love                        tetris-app-698f6577f8-95bp9                         1/1     Running   0             43d
+love                        tetris-app-698f6577f8-l9wdm                         1/1     Running   0             40d
+metallb-system              controller-5995677bd5-hgcml                         1/1     Running   0             40d
+metallb-system              speaker-22bs2                                       1/1     Running   0             66d
+metallb-system              speaker-gbz89                                       1/1     Running   2 (40d ago)   66d
+metallb-system              speaker-tz7qs                                       1/1     Running   0             66d
+youtrack                    youtrack-67569cbd55-2sd2j                           1/1     Running   0             40d
+root@wow:~# kubectl get ingress -A
+NAMESPACE   NAME             CLASS    HOSTS                 ADDRESS         PORTS     AGE
+argocd      argocd-server    nginx    argocd.kriswow.ru     45.132.255.17   80, 443   65d
+dashy       dashy            nginx    *                     45.132.255.17   80        9d
+love        tetris-ingress   <none>   love.kriswow.ru       45.132.255.17   80, 443   43d
+youtrack    youtrack         nginx    youtrack.kriswow.ru   45.132.255.17   80, 443   62d
+root@wow:~# 
