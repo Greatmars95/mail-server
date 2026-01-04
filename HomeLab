@@ -1,6 +1,9 @@
 Моя HomeLab
 
-```
+# Docker
+
+
+
 Last login: Sun Jan  4 20:32:06 2026 from 193.124.190.51
 root@k8s:~# docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
 NAMES                     IMAGE                                                            STATUS                 PORTS
@@ -74,3 +77,38 @@ dashy       dashy            nginx    *                     45.132.255.17   80  
 love        tetris-ingress   <none>   love.kriswow.ru       45.132.255.17   80, 443   43d
 youtrack    youtrack         nginx    youtrack.kriswow.ru   45.132.255.17   80, 443   62d
 root@wow:~# 
+
+
+# Gitlab
+
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-86-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Wed Dec 10 09:18:18 2025 from 193.124.190.51
+root@wow-gitlab:~# gitlab-ctl status
+down: alertmanager: 5666857s, normally up; run: log: (pid 50539) 6083282s
+run: crond: (pid 2901739) 5666812s; run: log: (pid 50267) 6083362s
+run: gitaly: (pid 50692) 6083270s; run: log: (pid 49917) 6083532s
+run: gitlab-exporter: (pid 2901748) 5666811s; run: log: (pid 50484) 6083299s
+run: gitlab-kas: (pid 2901750) 5666811s; run: log: (pid 50199) 6083509s
+run: gitlab-workhorse: (pid 2901758) 5666810s; run: log: (pid 50339) 6083345s
+run: logrotate: (pid 1920088) 209s; run: log: (pid 49860) 6083547s
+run: nginx: (pid 2901772) 5666809s; run: log: (pid 50377) 6083340s
+run: node-exporter: (pid 2901778) 5666809s; run: log: (pid 50469) 6083305s
+run: postgres-exporter: (pid 2901784) 5666809s; run: log: (pid 50623) 6083274s
+run: postgresql: (pid 49951) 6083523s; run: log: (pid 49965) 6083520s
+run: prometheus: (pid 2901791) 5666808s; run: log: (pid 50517) 6083288s
+run: puma: (pid 2901800) 5666808s; run: log: (pid 50280) 6083358s
+run: redis: (pid 49873) 6083541s; run: log: (pid 49882) 6083540s
+run: redis-exporter: (pid 2901806) 5666807s; run: log: (pid 50499) 6083292s
+run: registry: (pid 2901814) 5666807s; run: log: (pid 50420) 6083332s
+run: sidekiq: (pid 2901822) 5666806s; run: log: (pid 50304) 6083350s
+root@wow-gitlab:~# 
+
